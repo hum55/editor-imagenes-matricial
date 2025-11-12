@@ -1,0 +1,36 @@
+# Dependencias
+node_modules/
+package-lock.json
+
+# Archivos de prueba y cobertura
+coverage/
+.nyc_output/
+
+# Resultados generados (no versionar las imágenes procesadas)
+imagenes/salida/*.png
+imagenes/salida/*.jpg
+imagenes/salida/*.bmp
+!imagenes/salida/.gitkeep
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+*.log
+*.swp
+*.swo
+*~
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Archivos temporales
+tmp/
+temp/
+*.tmp
+
+# Entorno
+.env
+.env.local
