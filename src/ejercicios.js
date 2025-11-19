@@ -495,7 +495,19 @@ function rotar90Grados(matriz) {
   // Opción 1: Hacer transpuesta manualmente considerando que son objetos
   // Opción 2: Construir directamente la matriz rotada
   //   nuevoPixel[j][alto - 1 - i] = pixelOriginal[i][j]
-  
+  const filas = matriz.length;
+const cols = matriz[0].length;
+const nueva = crearMatrizVacia(cols, filas);
+
+
+for (let i = 0; i < filas; i++) {
+for (let j = 0; j < cols; j++) {
+nueva[j][filas - 1 - i] = matriz[i][j];
+}
+}
+
+
+return nueva;
   return []; // REEMPLAZAR
 }
 
