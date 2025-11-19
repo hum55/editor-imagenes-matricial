@@ -654,7 +654,34 @@ function detectarBordes(matriz, umbral = 50) {
   // 2. Para cada pixel (excepto bordes de la imagen):
   //    - Comparar con pixel derecho y pixel inferior
   //    - Si diferencia > umbral, marcar como borde
-  
+  const grises = convertirEscalaGrises(matriz);
+const dims = obtenerDimensiones(grises);
+const salida = crearMatrizVacia(dims.filas, dims.columnas);
+
+
+for (let i = 0; i < dims.filas; i++) {
+for (let j = 0; j < dims.columnas; j++) {
+if (i === dims.filas - 1 || j === dims.columnas - 1) {
+salida[i][j] = { r: 0, g: 0, b: 0, a: 255 };
+continue;
+}
+
+
+const px = grises[i][j].r;
+const derecho = grises[i][j + 1].r;
+const abajo = grises[i + 1][j].r;
+
+
+const dif = Math.max(Math.abs(px - derecho), Math.abs(px - abajo));
+
+
+const valor = dif > umbral ? 255 : 0;
+salida[i][j] = { r: valor, g: valor, b: valor, a: 255 };
+}
+}
+
+
+return salida;
   return []; // REEMPLAZAR
 }
 
