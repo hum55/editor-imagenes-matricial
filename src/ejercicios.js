@@ -598,7 +598,30 @@ return resultado;
  */
 function aplicarSepia(matriz) {
   // TODO: Implementar filtro sepia
-  
+  const resultado = copiarMatriz(matriz);
+
+
+for (let i = 0; i < resultado.length; i++) {
+for (let j = 0; j < resultado[i].length; j++) {
+const px = matriz[i][j];
+
+
+const r = 0.393 * px.r + 0.769 * px.g + 0.189 * px.b;
+const g = 0.349 * px.r + 0.686 * px.g + 0.168 * px.b;
+const b = 0.272 * px.r + 0.534 * px.g + 0.131 * px.b;
+
+
+resultado[i][j] = {
+r: limitarValorColor(r),
+g: limitarValorColor(g),
+b: limitarValorColor(b),
+a: px.a
+};
+}
+}
+
+
+return resultado;
   return []; // REEMPLAZAR
 }
 
