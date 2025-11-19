@@ -549,7 +549,34 @@ function mezclarImagenes(matriz1, matriz2, factor) {
   // r = r1 * (1 - factor) + r2 * factor
   // g = g1 * (1 - factor) + g2 * factor
   // b = b1 * (1 - factor) + b2 * factor
-  
+  const dims1 = obtenerDimensiones(matriz1);
+const dims2 = obtenerDimensiones(matriz2);
+
+
+if (dims1.filas !== dims2.filas || dims1.columnas !== dims2.columnas)
+throw new Error('Las imágenes deben tener el mismo tamaño');
+
+
+const resultado = crearMatrizVacia(dims1.filas, dims1.columnas);
+
+
+for (let i = 0; i < dims1.filas; i++) {
+for (let j = 0; j < dims1.columnas; j++) {
+const p1 = matriz1[i][j];
+const p2 = matriz2[i][j];
+
+
+resultado[i][j] = {
+r: limitarValorColor(p1.r * (1 - factor) + p2.r * factor),
+g: limitarValorColor(p1.g * (1 - factor) + p2.g * factor),
+b: limitarValorColor(p1.b * (1 - factor) + p2.b * factor),
+a: p1.a
+};
+}
+}
+
+
+return resultado;
   return []; // REEMPLAZAR
 }
 
