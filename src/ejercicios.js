@@ -274,6 +274,7 @@ function obtenerDimensionesImagen(rutaImagen) {
   const buffer = fs.readFileSync(rutaImagen);
 const png = PNG.sync.read(buffer);
 
+// nada
 
 return {
 ancho: png.width,
