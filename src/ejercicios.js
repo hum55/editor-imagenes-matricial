@@ -236,7 +236,21 @@ function obtenerCanal(matriz, canal) {
   //     };
   //   }
   // }
-  
+  if (!['r', 'g', 'b'].includes(canal)) throw new Error("El canal debe ser 'r', 'g' o 'b'");
+
+
+const resultado = copiarMatriz(matriz);
+
+
+for (let i = 0; i < resultado.length; i++) {
+for (let j = 0; j < resultado[i].length; j++) {
+const valor = matriz[i][j][canal];
+resultado[i][j] = { r: valor, g: valor, b: valor, a: matriz[i][j].a };
+}
+}
+
+
+return resultado;
   return []; // REEMPLAZAR CON TU CÓDIGO
 }
 
